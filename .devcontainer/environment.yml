@@ -1,0 +1,22 @@
+name: base
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python
+  - pip
+  - pytest
+  - fsspec
+  - gcsfs
+  - s3fs
+  - adlfs
+  - h5py
+  - pyyaml
+  - netcdf4
+  - h5netcdf
+  - tensorflow>=*=*cuda112*
+  - keras-cv
+  - jaxlib>=*=*cuda*
+  - jax
+  - pytorch>=*=*cuda112*
+  - torchvision>=*=*cuda112*
