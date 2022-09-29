@@ -45,7 +45,8 @@
 		"ms-vscode.github-issues-prs",
 		"visualstudioexptteam.intellicode-api-usage-examples",
 		"sourcery.sourcery",
-		"ms-vscode.github-issues-prs"
+		"ms-vscode.github-issues-prs",
+		"GitHub.copilot"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
