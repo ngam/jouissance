@@ -1,3 +1,5 @@
+# generate conda-lock with
+# conda-lock --mamba --kind=explicit -p linux-64 -f env.yml
 name: base
 channels:
   - conda-forge
