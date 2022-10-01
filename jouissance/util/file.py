@@ -1,6 +1,7 @@
 """ jouissance.util.file """
 
 import os
+import glob
 import urllib
 import urllib.request
 import itertools
@@ -26,7 +27,9 @@ def fsspec_fs(provider=None, con=None):
 
     if con["provider"] == "file":
         return fsspec.filesystem(
-            provider)
+            provider
+        ) if con["force_glob_provider"] is False \
+            else glob
 
     return fsspec.filesystem(
         provider, token="anon", anon=True)

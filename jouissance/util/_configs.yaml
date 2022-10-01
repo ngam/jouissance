@@ -3,6 +3,7 @@ default: True
 
 goes_data: "goes-17"
 provider: "gs"
+force_glob_provider: False
 abfs_account_name: "goeseuwest"
 
 cache_prefix: ""
