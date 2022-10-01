@@ -4,6 +4,7 @@ import tensorflow as tf
 
 from jouissance.util import read_conf, make_hash
 from jouissance.util import get_scenes_conditions_h5py
+from jouissance.util import get_scenes_conditions_netcdf4
 from jouissance.util import make_glob
 
 
@@ -11,7 +12,11 @@ class MyData(tf.data.Dataset):  # pylint: disable=abstract-method
     """ https://www.tensorflow.org/guide/data_performance """
 
     def _generator(self):
-        yield get_scenes_conditions_h5py(self)
+        con = read_conf()
+        if con["provider"] == "file":
+            yield get_scenes_conditions_netcdf4(self)
+        else:
+            yield get_scenes_conditions_h5py(self)
 
     def __new__(cls, file_paths=None):
         if file_paths is None:
