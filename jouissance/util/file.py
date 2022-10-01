@@ -105,8 +105,10 @@ def get_scenes_conditions_netcdf4(file, bck="tf", con=None):
 
     scenes, conditions = [], []
 
-    # _ncs = netCDF4.Dataset(f"{con['scene_folder']}/{file}")
-    _ncs = netCDF4.Dataset(f"{file}")
+    if file[:len(con["scene_folder"])] != con["scene_folder"]:
+        _ncs = netCDF4.Dataset(f"{con['scene_folder']}/{file}")
+    else:
+        _ncs = netCDF4.Dataset(f"{file}")
     scenes.extend(
         np.expand_dims(_ncs[f"CMI_C{_ch}"][:].data, axis=-1)
         for _ch in con["channels"]
