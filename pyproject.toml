@@ -29,7 +29,7 @@ repository = "https://github.com/ngam/jouissance"
 [project.optional-dependencies]
 test = [
     "pylint", "pytype", "flake8", "pytest",
-    "h5py", "netCDF4==1.5.8",
+    "h5py", "netCDF4",
     "fsspec", "gcsfs", "s3fs", "adlfs", "pyyaml",
     "tensorflow", "torch", "torchvision",
 ]
