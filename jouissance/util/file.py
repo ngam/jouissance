@@ -27,7 +27,7 @@ def fsspec_fs(provider=None, con=None):
 
     if con["provider"] == "file":
         return fsspec.filesystem(
-            provider) if con["force_glob_provider"] is False else glob
+            provider)
 
     return fsspec.filesystem(
         provider, token="anon", anon=True)
@@ -76,6 +76,7 @@ def make_glob(_fs=None, _dn=None, con=None):
     con = read_conf() if con is None else con
     _dn = make_name(con=con) if _dn is None else _dn
     _fs = fsspec_fs(con=con) if _fs is None else _fs
+    _fs = _fs if con["force_glob_provider"] is False else glob
 
     _px = con["products"][0]
     _gb = []
