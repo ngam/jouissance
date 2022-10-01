@@ -1,5 +1,4 @@
-""" make a model, compile it, and return it
-"""
+""" jouissance.tf.runs """
 
 import tensorflow as tf
 
