@@ -22,3 +22,4 @@ dependencies:
   - jax
   - pytorch>=*=*cuda112*
   - torchvision>=*=*cuda112*
+  - nvidia::cuda-nvcc
