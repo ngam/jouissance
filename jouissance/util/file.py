@@ -122,9 +122,11 @@ def get_scenes_conditions_netcdf4(file, bck="tf", con=None):
     _ci = (time.dayofyr - 1)*4 + (time.hour//6)
     _ncs.close()
 
+    _yr = time.year if time.year in con["years"] else con["years"][0]
+
     for _pd in con["reanalysis_products"]:
         _ncc = netCDF4.Dataset(
-            f"{con['cond_folder']}/{_pd}.{time.year}.nc"
+            f"{con['cond_folder']}/{_pd}.{_yr}.nc"
         )
         conditions.append(
             _ncc[_pd][_ci, con["reanalysis_levels"], :, :].data.copy())
@@ -170,9 +172,11 @@ def get_scenes_conditions_h5py(file, bck="tf", con=None):
     _ci = (time.dayofyr - 1)*4 + (time.hour//6)
     _ncs.close()
 
+    _yr = time.year if time.year in con["years"] else con["years"][0]
+
     for _pd in con["reanalysis_products"]:
         _ncc = h5py.File(
-            f"{con['cond_folder']}/{_pd}.{time.year}.nc"
+            f"{con['cond_folder']}/{_pd}.{_yr}.nc"
         )
         conditions.append(
             _ncc[_pd][_ci, con["reanalysis_levels"], :, :].copy())
