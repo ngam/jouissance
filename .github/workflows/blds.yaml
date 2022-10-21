@@ -3,12 +3,12 @@ name: blds
 on:
   release:
     types: [published]
-  push:
-    branches: [ main ]
-    tags:
-      - '*.*.*'
-  pull_request:
-    branches: [ main ]
+  # push:
+  #   branches: [ main ]
+  #   tags:
+  #     - '*.*.*'
+  # pull_request:
+  #   branches: [ main ]
 
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
