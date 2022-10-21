@@ -8,7 +8,7 @@ pytype==2022.9.27
 flake8==5.0.4
 netCDF4==1.6.1
 h5py==3.7.0
-fsspec==2022.8.2
+fsspec==2022.10.0
 gcsfs==2022.8.2
 s3fs==2022.8.2
 adlfs==2022.10.0
