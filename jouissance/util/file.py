@@ -108,9 +108,9 @@ def get_scenes_conditions_netcdf4(file, bck="tf", con=None):
     scenes, conditions = [], []
 
     if file[:len(con["scene_folder"])] != con["scene_folder"]:
-        _ncs = netCDF4.Dataset(f"{con['scene_folder']}/{file}")
+        _ncs = netCDF4.Dataset(f"{con['scene_folder']}/{file}")  # type: ignore
     else:
-        _ncs = netCDF4.Dataset(f"{file}")
+        _ncs = netCDF4.Dataset(f"{file}")  # type: ignore
     scenes.extend(
         np.expand_dims(_ncs[f"CMI_C{_ch}"][:].data, axis=-1)
         for _ch in con["channels"]
@@ -125,7 +125,7 @@ def get_scenes_conditions_netcdf4(file, bck="tf", con=None):
     _yr = time.year if time.year in con["years"] else con["years"][0]
 
     for _pd in con["reanalysis_products"]:
-        _ncc = netCDF4.Dataset(
+        _ncc = netCDF4.Dataset(  # type: ignore
             f"{con['cond_folder']}/{_pd}.{_yr}.nc"
         )
         conditions.append(
@@ -159,15 +159,15 @@ def get_scenes_conditions_h5py(file, bck="tf", con=None):
 
     scenes.extend(
         np.expand_dims(
-            _ncs[f"CMI_C{_ch}"][:] *
+            _ncs[f"CMI_C{_ch}"][:] *  # type: ignore
             _ncs[f"CMI_C{_ch}"].attrs["scale_factor"] +
             _ncs[f"CMI_C{_ch}"].attrs["add_offset"],
             axis=-1
         ) for _ch in con["channels"]
     )
 
-    _nctime = _ncs["t"][()]
-    _ncunit = _ncs["t"].attrs["units"].decode("utf-8")
+    _nctime = _ncs["t"][()]  # type: ignore
+    _ncunit = _ncs["t"].attrs["units"].decode("utf-8")  # type: ignore
     time = cftime.num2date(_nctime, _ncunit)
     _ci = (time.dayofyr - 1)*4 + (time.hour//6)
     _ncs.close()
@@ -179,7 +179,9 @@ def get_scenes_conditions_h5py(file, bck="tf", con=None):
             f"{con['cond_folder']}/{_pd}.{_yr}.nc"
         )
         conditions.append(
-            _ncc[_pd][_ci, con["reanalysis_levels"], :, :].copy())
+            _ncc[_pd][  # type: ignore
+                _ci, con["reanalysis_levels"], :, :
+            ].copy())  # type: ignore
         _ncc.close()
 
     if bck == "pt":

@@ -121,10 +121,10 @@ class DenseDisc(torch.nn.Module):
                 stride=(
                     self.scenes_shape[1]//self.conditions_shape[1],
                     self.scenes_shape[2]//self.conditions_shape[2]
-                )
+                )  # type: ignore
             )(_con)
 
-        _input = torch.cat([_sce, hold], axis=1)
+        _input = torch.cat([_sce, hold], axis=1)  # type: ignore
         _out = torch.nn.BatchNorm2d(
             self.conditions_shape[0]+self.scenes_shape[0])(_input)
         steps = int(np.log2(np.min(
@@ -178,7 +178,7 @@ class UNetModel(torch.nn.Module):
         if self.use_latent:
             if _lat is None:
                 raise ValueError("latent var is requires")
-            _input = torch.cat([_con, _lat], axis=1)
+            _input = torch.cat([_con, _lat], axis=1)  # type: ignore
         skips = []
         steps = int(np.log2(np.min(
             [self.conditions_shape[-2], self.conditions_shape[-1]]
@@ -212,7 +212,7 @@ class UNetModel(torch.nn.Module):
                 feats,
                 stride=1)(_out)
             _out = torch.add(_res, _out)
-            _out = torch.cat([_out, skip], axis=1)
+            _out = torch.cat([_out, skip], axis=1)  # type: ignore
             feats += skip.shape[1]
 
         passcounter = 1

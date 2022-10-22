@@ -58,7 +58,7 @@ def run_it():
     cp_callback = tf.keras.callbacks.ModelCheckpoint(
         filepath=".",
         save_weights_only=True,
-        save_freq=int(configs["save_freq"]),
+        save_freq=int(configs["save_freq"]),  # type: ignore
         verbose=1
     )
 

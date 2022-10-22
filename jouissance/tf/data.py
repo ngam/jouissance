@@ -35,10 +35,10 @@ class MyData(tf.data.Dataset):  # pylint: disable=abstract-method
             output_signature=(
                 tf.TensorSpec(
                     shape=tf.TensorShape(scenes_shape),
-                    dtype=tf.float32),
+                    dtype=tf.float32),  # type: ignore
                 tf.TensorSpec(
                     shape=tf.TensorShape(conditions_shape),
-                    dtype=tf.float32),
+                    dtype=tf.float32),  # type: ignore
             ),
             args=(file_paths,),
         )
