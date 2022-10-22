@@ -14,7 +14,7 @@ def read_conf(conf_path=None):
         return yaml.safe_load(open(conf_path, "r", encoding="utf8"))
 
     if os.environ.get("PDGM_CONFIGS_PATH") is not None:
-        conf_path = os.environ.get("PDGM_CONFIGS_PATH")
+        conf_path = os.environ.get("PDGM_CONFIGS_PATH", "")
         return yaml.safe_load(open(conf_path, "r", encoding="utf8"))
 
     con_dir = os.environ.get("PDGM_CONFIGS_DIR", os.getcwd())

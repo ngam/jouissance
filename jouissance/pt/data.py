@@ -8,10 +8,10 @@ import torchvision
 
 from jouissance.util import read_conf, make_hash
 from jouissance.util import get_scenes_conditions_h5py
-from jouissance.util import make_glob
+from jouissance.util import make_glob, save_conditions
 
 
-class MyData(torch.utils.data.Dataset):
+class MyData(torch.utils.data.Dataset):  # type: ignore
     """ custom dataset """
 
     def __init__(self, files, _hash, configs):
@@ -59,10 +59,11 @@ class MyData(torch.utils.data.Dataset):
         return scenes, conditions
 
 
-def make_data():
+def make_data(configs=None):
     """ make a dataset """
 
-    configs = read_conf()
+    if configs is None:
+        configs = read_conf()
     cache_fold = f"{configs['cache_prefix']}{make_hash(configs)}pt"
 
     if configs["use_cache_only"]:
@@ -71,7 +72,10 @@ def make_data():
     else:
         files = make_glob(con=configs)
 
-    return torch.utils.data.DataLoader(
+    if not os.path.exists(configs["cond_folder"]):
+        save_conditions(con=configs)
+
+    return torch.utils.data.DataLoader(  # type: ignore
         MyData(files, cache_fold, configs),
         batch_size=int(configs["batch_size"]),
         shuffle=True,
