@@ -19,7 +19,7 @@ def downsample_block(
 
     result.add(tf.keras.layers.Conv2D(
         filters, size, strides=strides, padding="same",
-        kernel_initializer=initializer, use_bias=False,
+        kernel_initializer=initializer, use_bias=False,  # type: ignore
         data_format="channels_last"
     ))
 
@@ -47,7 +47,7 @@ def upsample_block(
     if transpose:
         result.add(tf.keras.layers.Conv2DTranspose(
             filters, size, strides=strides, padding="same",
-            kernel_initializer=initializer, use_bias=False,
+            kernel_initializer=initializer, use_bias=False,  # type: ignore
             data_format="channels_last"
         ))
 
@@ -85,7 +85,7 @@ def dense_disc(
             strides=(
                 scenes_shape[0]//conditions_shape[0],
                 scenes_shape[1]//conditions_shape[1]
-            )
+            )  # type: ignore
         )(input_conditions)
     else:
         holding = input_conditions
