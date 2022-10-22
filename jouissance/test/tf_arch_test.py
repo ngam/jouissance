@@ -27,7 +27,7 @@ def test_upsample_block():
     )
     assert result(
         tf.random.normal(shape=(1, 1, 1, 1))
-    ).shape == (1, 2, 2, 1)
+    ).shape == (1, 2, 2, 1)  # type: ignore
 
 
 def test_downsample_block():
@@ -39,7 +39,7 @@ def test_downsample_block():
     )
     assert result(
         tf.random.normal(shape=(1, 32, 64, 128))
-    ).shape == (1, 16, 32, 64)
+    ).shape == (1, 16, 32, 64)  # type: ignore
 
 
 def test_dense_disc():
@@ -52,14 +52,14 @@ def test_dense_disc():
         scenes_shape=scenes.shape[1:],
         conditions_shape=conditions.shape[1:],
     )
-    assert disc([conditions, scenes]).shape == (5, 1)
+    assert disc([conditions, scenes]).shape == (5, 1)  # type: ignore
     scenes = tf.random.normal(shape=(5, 64, 128, 1))
     conditions = tf.random.normal(shape=(5, 32, 64, 5))
     disc = dense_disc(
         scenes_shape=scenes.shape[1:],
         conditions_shape=conditions.shape[1:],
     )
-    assert disc([conditions, scenes]).shape == (5, 1)
+    assert disc([conditions, scenes]).shape == (5, 1)  # type: ignore
 
 
 def test_unet_model():
@@ -78,8 +78,9 @@ def test_unet_model():
         conditions_shape=conditions.shape[1:],
         use_latent=True,
     )
-    assert unet_no_latent(conditions).shape == scenes.shape
-    assert unet_latent([conditions, conditions]).shape == scenes.shape
+    assert unet_no_latent(conditions).shape == scenes.shape  # type: ignore
+    assert unet_latent(
+        [conditions, conditions]).shape == scenes.shape  # type: ignore
 
 
 def test_unet_shapes():
@@ -107,5 +108,7 @@ def test_unet_shapes():
                 conditions_shape=con,
                 use_latent=False
             )
-            assert unet_no_latent(csample).shape == ssample.shape
-            assert unet_latent([csample, csample]).shape == ssample.shape
+            assert unet_no_latent(
+                csample).shape == ssample.shape  # type: ignore
+            assert unet_latent(
+                [csample, csample]).shape == ssample.shape  # type: ignore

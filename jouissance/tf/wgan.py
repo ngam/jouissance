@@ -150,4 +150,5 @@ class UNetWGAN(tf.keras.Model):  # pylint: disable=too-many-instance-attributes
             self.g_optimizer.apply_gradients(
                 zip(gen_gradient, self.generator.trainable_variables)
             )
-        return {"d_loss": scaled_d_loss, "g_loss": scaled_g_loss}
+        return {
+            "d_loss": scaled_d_loss, "g_loss": scaled_g_loss}  # type: ignore

@@ -182,6 +182,6 @@ def unet_model(
     output = tf.keras.layers.Reshape(scenes_shape, dtype='float32')(output)
     if use_latent:
         return tf.keras.Model(
-            inputs=[input_conditions, input_noise],
+            inputs=[input_conditions, input_noise],  # type: ignore
             outputs=[output], name=name)
     return tf.keras.Model(inputs=input_conditions, outputs=[output], name=name)
