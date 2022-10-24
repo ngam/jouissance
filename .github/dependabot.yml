@@ -5,14 +5,14 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
 
   - package-ecosystem: "docker"
     directory: ".devcontainer"
     schedule:
-      interval: "daily"
+      interval: "monthly"
 
   - package-ecosystem: "pip"
     directory: ".devcontainer/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
