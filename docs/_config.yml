@@ -13,7 +13,7 @@ launch_buttons:
 repository:
   url: https://github.com/ngam/jouissance
   path_to_book: docs
-  branch: 0.2.1
+  branch: main
 
 html:
   use_repository_button: true
