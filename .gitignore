@@ -10,7 +10,7 @@ configs.yml
 configs.yaml*
 
 # Ignore notebooks
-*.ipynb
+notes.ipynb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
