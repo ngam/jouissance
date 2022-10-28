@@ -1,0 +1,7 @@
+format: jb-book
+root: jouis
+parts:
+- caption: intro
+  numbered: false
+  chapters:
+  - file: jouiss

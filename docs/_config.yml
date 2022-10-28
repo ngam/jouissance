@@ -1,6 +1,6 @@
 title: "jouissance"
 author: "ngam"
-logo: images/placeholder.png
+logo: placeholder.png
 execute:
   execute_notebooks: "force"
 
