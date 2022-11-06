@@ -24,7 +24,7 @@ jobs:
         pysrc: ["system", "conda"]
         pyver: ["3.7", "3.8", "3.10"]
         exclude:
-          - pyrsc: "conda"
+          - pysrc: "conda"
             pyver: ["3.7", "3.8"]
 
     steps:
