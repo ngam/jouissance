@@ -19,30 +19,32 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
+        os: ["ubuntu-latest"]
         backend: ["tf", "pt"]
         pysrc: ["system", "conda"]
-        pyver-system: ["3.7", "3.8", "3.10"]
-        pyver-conda: ["3.10"]
-        os: ["ubuntu-latest"]
+        pyver: ["3.7", "3.8", "3.10"]
+        exclude:
+          - pyrsr: "conda"
+            pyver: ["3.7", "3.8"]
 
     steps:
     - uses: actions/checkout@v3
     
     - 
       if: ${{ matrix.pysrc == 'system' }}
-      name: Set up Python ${{ matrix.pyver-system }} from system
+      name: Set up Python ${{ matrix.pyver }} from system
       uses: actions/setup-python@v4.2.0
       with:
-        python-version: ${{ matrix.pyver-system }}
+        python-version: ${{ matrix.pyver }}
 
     -
       if: ${{ matrix.pysrc == 'conda' }} 
-      name: Set up Python ${{ matrix.pyver-conda }} from conda
+      name: Set up Python ${{ matrix.pyver }} from conda
       uses: conda-incubator/setup-miniconda@v2
       with:
         miniforge-variant: Mambaforge
         miniforge-version: latest
-        python-version: ${{ matrix.pyver-conda }}
+        python-version: ${{ matrix.pyver }}
         mamba-version: "*"
         channels: conda-forge
         auto-activate-base: false
