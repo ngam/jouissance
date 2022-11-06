@@ -91,7 +91,7 @@ jobs:
   # nvpt:
   #   runs-on: ubuntu-latest
   #   container:
-  #     image: nvcr.io/nvidia/pytorch:22.09-py3
+  #     image: nvcr.io/nvidia/pytorch:22.10-py3
     
   #   steps:
   #   - uses: actions/checkout@v3
@@ -111,7 +111,7 @@ jobs:
   # nvtf:
   #   runs-on: ubuntu-latest
   #   container:
-  #     image: nvcr.io/nvidia/tensorflow:22.09-tf2-py3
+  #     image: nvcr.io/nvidia/tensorflow:22.10-tf2-py3
     
   #   steps:
   #   - uses: actions/checkout@v3
@@ -131,7 +131,7 @@ jobs:
   cfcf:
     runs-on: ubuntu-latest
     container:
-      image: condaforge/mambaforge:4.14.0-0
+      image: condaforge/mambaforge:latest
     
     steps:
     - uses: actions/checkout@v3
