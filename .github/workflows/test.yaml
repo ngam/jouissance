@@ -26,6 +26,8 @@ jobs:
         exclude:
           - pysrc: "conda"
             pyver: "3.7"
+          - pysrc: "conda"
+            pyver: "3.8"
 
     steps:
     - uses: actions/checkout@v3
