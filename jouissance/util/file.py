@@ -234,7 +234,7 @@ def save_scenes(_glb=None, _fs=None, con=None):
 def read_lines_from_file(filename, strip=True):
     """ read lines from file and return a list """
 
-    with open(filename, "r") as fname:
+    with open(filename, "r", encoding="utf-8") as fname:
         raw_lines = fname.readlines()
 
     return [line.strip() for line in raw_lines] if strip else raw_lines
