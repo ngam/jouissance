@@ -229,3 +229,29 @@ def save_scenes(_glb=None, _fs=None, con=None):
         if not os.path.exists(f"{_fol}/{_fnx}"):
             os.makedirs(_fol, exist_ok=True)
             _fs.get(_fn, f"{_fol}/{_fnx}")
+
+
+def read_lines_from_file(filename, strip=True):
+    """ read lines from file and return a list """
+
+    with open(filename, "r", encoding="utf-8") as fname:
+        raw_lines = fname.readlines()
+
+    return [line.strip() for line in raw_lines] if strip else raw_lines
+
+
+def download_files_from_url(url, dest):
+    """ download a file from url to a dest """
+
+    urllib.request.urlretrieve(url, dest)
+
+
+def download_files_from_url_batch(urls, dest_folder):
+    """ download files from list to a dest_folder """
+
+    if not os.path.exists(f"{dest_folder}"):
+        os.makedirs(f"{dest_folder}", exist_ok=True)
+
+    for url in urls:
+        filename = url.split("/")[-1]
+        download_files_from_url(url, os.path.join(dest_folder, filename))

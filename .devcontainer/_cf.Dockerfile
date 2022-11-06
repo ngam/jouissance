@@ -1,4 +1,4 @@
-FROM condaforge/mambaforge:4.14.0-0 as mamba
+FROM condaforge/mambaforge:latest as mamba
 
 ADD .devcontainer/conda-linux-64.lock /locks/conda-linux-64.lock
 RUN mamba create -p /opt/env --copy --file /locks/conda-linux-64.lock && mamba clean -aqy
