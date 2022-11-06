@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/vscode/devcontainers/python
+FROM mcr.microsoft.com/devcontainers/python:3.10
 
 RUN pip3 --disable-pip-version-check --no-cache-dir install -U pip
 
