@@ -111,7 +111,7 @@ jobs:
   # nvtf:
   #   runs-on: ubuntu-latest
   #   container:
-  #     image: nvcr.io/nvidia/tensorflow:22.10-tf2-py3
+  #     image: nvcr.io/nvidia/tensorflow:22.10.1-tf2-py3
     
   #   steps:
   #   - uses: actions/checkout@v3
