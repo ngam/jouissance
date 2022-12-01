@@ -2,7 +2,7 @@
 jax[cuda11_cudnn82]==0.3.24
 jaxlib==0.3.24
 flax==0.6.1
-pylint==2.15.5
+pylint==2.15.7
 pytest==7.2.0
 pytype==2022.10.26
 flake8==5.0.4
