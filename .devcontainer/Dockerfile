@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:3.10
+FROM mcr.microsoft.com/devcontainers/python:3.11
 
 RUN pip3 --disable-pip-version-check --no-cache-dir install -U pip
 
