@@ -72,7 +72,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Build 
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           file: .devcontainer/_${{ matrix.container }}.Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
@@ -167,7 +167,7 @@ jobs:
       -
         if: ${{ github.event.release }}
         name: Build and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           file: .devcontainer/_${{ matrix.container }}.Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
