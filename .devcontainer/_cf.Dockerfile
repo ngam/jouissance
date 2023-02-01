@@ -6,7 +6,7 @@ RUN mamba create -p /opt/env --copy --file /locks/conda-linux-64.lock && mamba c
 COPY . /workspace/jouissance
 RUN mamba run -p /opt/env python -m pip --disable-pip-version-check --no-cache-dir install /workspace/jouissance/
 
-FROM ubuntu:22.04
+FROM ubuntu:23.04
 
 COPY --from=mamba /opt/env /opt/env
 
