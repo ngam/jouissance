@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/tensorflow:22.10.1-tf2-py3
+FROM nvcr.io/nvidia/tensorflow:23.03-tf2-py3
 
 RUN pip3 --disable-pip-version-check --no-cache-dir install -U pip
 
