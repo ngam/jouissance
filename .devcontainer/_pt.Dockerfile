@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/pytorch:22.10-py3
+FROM nvcr.io/nvidia/pytorch:23.04-py3
 
 RUN pip3 --disable-pip-version-check --no-cache-dir install -U pip
 
